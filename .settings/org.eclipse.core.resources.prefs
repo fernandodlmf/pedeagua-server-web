@@ -1,0 +1,10 @@
+eclipse.preferences.version=1
+encoding//src/main/webapp/WEB-INF/index.html=ISO-8859-1
+encoding//src/main/webapp/WEB-INF/templates/minhaConta.html=ISO-8859-1
+encoding//src/main/webapp/WEB-INF/templates/pedidos.html=ISO-8859-1
+encoding//src/main/webapp/WEB-INF/templates/produtos.html=ISO-8859-1
+encoding//src/main/webapp/resources/js/controllers/ClienteDetalhesController.js=ISO-8859-1
+encoding//src/main/webapp/resources/js/controllers/LoginController.js=ISO-8859-1
+encoding//src/main/webapp/resources/js/controllers/MinhaContaController.js=ISO-8859-1
+encoding//src/main/webapp/resources/js/controllers/PedidosController.js=ISO-8859-1
+encoding//src/main/webapp/resources/js/controllers/ProdutosController.js=ISO-8859-1

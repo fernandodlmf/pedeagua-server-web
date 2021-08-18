@@ -1,0 +1,78 @@
+<div class="mdl-cell mdl-cell--10-col">
+
+    <section layout="column" layout-align="top center">
+        <span ng-show="false" class="md-headline">Defina o preço e a quantidade de cada produto que gostaria de vender</span>
+
+        <div class="mdl-cell mdl-cell--7-col md-whiteframe-z1" layout layout-align="center center">
+
+            <md-button ng-click="abreModal($event, veiculo)">
+                <md-tooltip md-direction="bottom">
+                    Anterior
+                </md-tooltip>
+                <md-icon md-font-icon>skip_previous</md-icon>
+            </md-button>
+
+            <span flex></span>
+
+            <div layout="column" layout-align="top center">
+                <img src="../resources/assets/png/logo_sublime.png " class="mdl-cell mdl-cell--8-col" alt="logo">
+
+                <div layout>
+                    <md-input-container md-no-float class="">
+                        <label>Preço</label>
+                        <input maxlength="40" name="nome" ng-model="cl.person.name"
+                               type="text">
+                    </md-input-container>
+                    <span flex></span>
+                    <md-input-container md-no-float class="">
+                        <label>Estoque</label>
+                        <input maxlength="40" name="sobreNome" ng-model="cl.person.sobrenome"
+                               type="text">
+                    </md-input-container>
+
+                </div>
+            </div>
+
+            <span flex></span>
+
+            <md-button ng-click="abreModal($event, veiculo)">
+                <md-tooltip md-direction="bottom">
+                    Próximo
+                </md-tooltip>
+                <md-icon md-font-icon>skip_next</md-icon>
+            </md-button>
+
+        </div>
+
+        <md-button class="md-raised md-primary mdl-cell mdl-cell--7-col md-whiteframe-z1" ng-click="abreModal($event, veiculo)">
+            salvar
+        </md-button>
+
+    </section>
+
+    <md-grid-list
+            md-cols="10" md-row-height="4:4"
+            md-cols-xs="4" md-row-height-xs="4:4"
+            md-gutter="8px" md-gutter-xs="8px">
+        <md-grid-tile
+                ng-repeat="agua in produtoAgua"
+                md-rowspan="2"
+                md-colspan="2"
+                >
+
+            <img ng-src="{{agua.logo}}" class="mdl-cell mdl-cell--10-col md-avatar" alt="logo">
+
+            <md-grid-tile-footer layout="column" style="background-color: #F44336" layout-align="center center">
+                <span class="mdl-cell mdl-cell--6-col">{{agua.preco}}</span>
+                <span>|</span>
+                <span class="mdl-cell mdl-cell--6-col" >{{agua.estoque}} unidades</span>
+            </md-grid-tile-footer>
+
+        </md-grid-tile>
+    </md-grid-list>
+
+
+
+</div>
+
+

@@ -1,0 +1,22 @@
+
+    <div layout-fill map-lazy-load="https://maps.google.com/maps/api/js"
+         map-lazy-load-params="{{googleMapsUrl}}" layout="column" layout-align="center center">
+
+        <ng-map layout-fill class="md-whiteframe-z2" zoom="10">
+            <directions
+                    draggable="true"
+                    panel="directions-panel"
+                    origin="{{origin}}"
+                    destination="{{destination}}">
+            </directions>
+        </ng-map>
+
+    </div>
+
+
+
+
+
+
+
+

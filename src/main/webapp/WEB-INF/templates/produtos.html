@@ -1,0 +1,182 @@
+<md-content layout layout-fill>
+    <md-tabs md-border-bottom md-stretch-tabs="always" layout-fill class="md-primary" md-selected="data.selectedIndex" md-align-tabs="{{data.bottom ? 'bottom' : 'top'}}">
+        <md-tab id="tabAgua" >
+            <md-tab-label>Água</md-tab-label>
+            <md-tab-body>
+                <md-content layout="column" layout-align="center center">
+                    <section class="mdl-cell mdl-cell--10-col">
+
+                        <section layout="column" layout-align="top center">
+                            <span ng-show="false" class="md-headline">Defina o preço e a quantidade de cada produto que gostaria de vender</span>
+
+                            <div class="mdl-cell mdl-cell--7-col md-whiteframe-z1" layout layout-align="center center">
+
+                                <md-button ng-click="anteriorProduto(0)">
+                                    <md-tooltip md-direction="bottom">
+                                        Anterior
+                                    </md-tooltip>
+                                    <md-icon md-font-icon>skip_previous</md-icon>
+                                </md-button>
+
+                                <span flex></span>
+
+                                <div layout="column" layout-align="top center">
+                                    <img ng-src="{{produtoAgua.image_url}}" class="mdl-cell mdl-cell--8-col" alt="logo">
+
+                                    <div layout>
+                                        <md-input-container md-no-float class="">
+                                            <label>Preço</label>
+                                            <input name="preco" ng-model="produtoAgua.preco"
+                                                   type="text" smart-float/>
+                                        </md-input-container>
+                                        <span flex></span>
+                                        <md-input-container md-no-float class="">
+                                            <label>Estoque</label>
+                                            <input name="estoque" ng-model="produtoAgua.estoque"
+                                                   type="text">
+                                        </md-input-container>
+
+                                    </div>
+                                </div>
+
+                                <span flex></span>
+
+                                <md-button ng-click="proximoProduto(0)">
+                                    <md-tooltip md-direction="bottom">
+                                        Próximo
+                                    </md-tooltip>
+                                    <md-icon md-font-icon>skip_next</md-icon>
+                                </md-button>
+
+                            </div>
+
+                            <md-button class="md-raised md-accent mdl-cell mdl-cell--7-col md-whiteframe-z1" ng-click="salvarProdutosPorEmpresa(0)">
+                                salvar
+                            </md-button>
+
+                        </section>
+
+                        <md-grid-list
+                                md-cols="10" md-row-height="4:4"
+                                md-cols-xs="4" md-row-height-xs="4:4"
+                                md-gutter="8px" md-gutter-xs="8px">
+                            <md-grid-tile
+                                    ng-repeat="agua in ListprodutoAgua"
+                                    md-rowspan="2"
+                                    md-colspan="2"
+                            >
+
+                                <img ng-src="{{agua.image_url}}" class="mdl-cell mdl-cell--10-col md-avatar" alt="logo">
+
+                                <md-grid-tile-footer ng-if="agua.estoque != '0' && agua.preco != '0.00'" layout="column" style="background-color: #2196F3" layout-align="center center">
+                                    <span class="mdl-cell mdl-cell--6-col">R$ {{agua.preco}}</span>
+                                    <span>|</span>
+                                    <span class="mdl-cell mdl-cell--6-col" >{{agua.estoque}} unidades</span>
+                                </md-grid-tile-footer>
+
+                                <md-grid-tile-footer ng-if="agua.estoque == '0' || agua.preco == '0.00' " layout="column" style="background-color: #9E9E9E" layout-align="center center">
+                                    <span class="mdl-cell mdl-cell--6-col">R$ {{agua.preco}}</span>
+                                    <span>|</span>
+                                    <span class="mdl-cell mdl-cell--6-col" >{{agua.estoque}} unidades</span>
+                                </md-grid-tile-footer>
+
+                            </md-grid-tile>
+                        </md-grid-list>
+                    </section>
+
+                </md-content>
+            </md-tab-body>
+        </md-tab>
+        <md-tab id="tabGas">
+            <md-tab-label>Gáss</md-tab-label>
+            <md-tab-body>
+
+                <div layout="column" layout-align="center center">
+                    <section class="mdl-cell mdl-cell--10-col">
+
+                        <section layout="column" layout-align="top center">
+                            <span ng-show="false" class="md-headline">Defina o preço e a quantidade de cada produto que gostaria de vender</span>
+
+                            <div class="mdl-cell mdl-cell--7-col md-whiteframe-z1" layout layout-align="center center">
+
+                                <md-button ng-click="anteriorProduto(1)">
+                                    <md-tooltip md-direction="bottom">
+                                        Anterior
+                                    </md-tooltip>
+                                    <md-icon md-font-icon>skip_previous</md-icon>
+                                </md-button>
+
+                                <span flex></span>
+
+                                <div layout="column" layout-align="top center">
+                                    <img ng-src="{{produtoGas.image_url}}" class="mdl-cell mdl-cell--8-col" alt="logo">
+
+                                    <div layout>
+                                        <md-input-container md-no-float class="">
+                                            <label>Preço</label>
+                                            <input maxlength="40" name="nome" ng-model="produtoGas.preco"
+                                                   type="text">
+                                        </md-input-container>
+                                        <span flex></span>
+                                        <md-input-container md-no-float class="">
+                                            <label>Estoque</label>
+                                            <input maxlength="40" name="sobreNome" ng-model="produtoGas.estoque"
+                                                   type="text">
+                                        </md-input-container>
+
+                                    </div>
+                                </div>
+
+                                <span flex></span>
+
+                                <md-button ng-click="proximoProduto(1)">
+                                    <md-tooltip md-direction="bottom">
+                                        Próximo
+                                    </md-tooltip>
+                                    <md-icon md-font-icon>skip_next</md-icon>
+                                </md-button>
+
+                            </div>
+
+                            <md-button class="md-raised md-primary mdl-cell mdl-cell--7-col md-whiteframe-z1" ng-click="salvarProdutosPorEmpresa(1)">
+                                salvar
+                            </md-button>
+
+                        </section>
+
+                        <md-grid-list
+                                md-cols="10" md-row-height="4:4"
+                                md-cols-xs="4" md-row-height-xs="4:4"
+                                md-gutter="8px" md-gutter-xs="8px">
+                            <md-grid-tile
+                                    ng-repeat="gas in ListprodutoGas"
+                                    md-rowspan="2"
+                                    md-colspan="2"
+                            >
+
+                                <img ng-src="{{gas.image_url}}" class="mdl-cell mdl-cell--10-col md-avatar" alt="logo">
+
+
+
+                                <md-grid-tile-footer ng-if="gas.estoque != '0' && gas.preco != '0.00'" layout="column" style="background-color: #F44336" layout-align="center center">
+                                    <span class="mdl-cell mdl-cell--6-col">R$ {{gas.preco}}</span>
+                                    <span>|</span>
+                                    <span class="mdl-cell mdl-cell--6-col" >{{gas.estoque}} unidades</span>
+                                </md-grid-tile-footer>
+
+                                <md-grid-tile-footer ng-if="gas.estoque == '0' || gas.preco == '0.00'" layout="column" style="background-color: #9E9E9E" layout-align="center center">
+                                    <span class="mdl-cell mdl-cell--6-col">R$ {{gas.preco}}</span>
+                                    <span>|</span>
+                                    <span class="mdl-cell mdl-cell--6-col" >{{gas.estoque}} unidades</span>
+                                </md-grid-tile-footer>
+
+                            </md-grid-tile>
+                        </md-grid-list>
+                    </section>
+
+                </div>
+
+            </md-tab-body>
+        </md-tab>
+    </md-tabs>
+</md-content>

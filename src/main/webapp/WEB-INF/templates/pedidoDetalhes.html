@@ -1,0 +1,108 @@
+<section class="md-padding" layout="column" layout-align="top center">
+    <section layout="column" layout-align="top center" class="mdl-cell mdl-cell--7-col flex-gt-sm">
+        <div layout-fill layout-gt-xs layout-xs>
+            <span flex></span>
+
+            <md-icon md-font-icon>
+                <md-tooltip md-direction="top">
+                    Dados do pedido
+                </md-tooltip>
+                work
+            </md-icon>
+
+            <span flex></span>
+
+            <a class="mdl-button mdl-js-button mdl-button--icon" href="#/info/pedidos">
+                <md-tooltip md-direction="left">
+                    Voltar
+                </md-tooltip>
+                <md-icon md-font-icon>reply</md-icon>
+            </a>
+
+        </div>
+        <div layout-xs="column" layout-gt-xs layout-fill>
+            <md-input-container md-no-float class="mdl-cell mdl-cell--6-col">
+                <label>Nome do cliente</label>
+                <input ng-disabled="!data.cb1" required md-no-asterisk name="nome"  ng-model="pedido.nome_cliente"
+                       type="text">
+            </md-input-container>
+
+            <md-input-container md-no-float class="mdl-cell mdl-cell--6-col">
+                <label>Endereço</label>
+                <input ng-disabled="!data.cb1" required md-no-asterisk ng-model="pedido.endereco" type="text" name="endereco">
+            </md-input-container>
+        </div>
+        <div layout-xs="column" layout-gt-xs layout-fill>
+
+            <div layout-gt-xs layout-xs>
+                <md-input-container md-no-float class="md-block mdl-cell mdl-cell--6-col">
+                    <label>Data do Pedido</label>
+                    <input ng-disabled="!data.cb1"
+                           required md-no-asterisk ng-model="pedido.data_pedido"
+                           name="data_pedido" type="text" >
+                </md-input-container>
+
+
+                <md-input-container md-no-float class="mdl-cell mdl-cell--6-col">
+                    <label>Hora do Pedido</label>
+                    <input ng-disabled="!data.cb1" md-no-asterisk ng-model="pedido.hora_pedido" type="text" name="hora_pedido">
+                </md-input-container>
+            </div>
+            <div layout-gt-xs layout-xs>
+
+                <md-input-container md-no-float class="md-block mdl-cell mdl-cell--6-col">
+                    <label>Data do Entrega</label>
+                    <input ng-disabled="!data.cb1"
+                           required md-no-asterisk ng-model="pedido.data_entrega"
+                           name="data_pentrega" type="text">
+                </md-input-container>
+
+
+                <md-input-container md-no-float class="mdl-cell mdl-cell--6-col">
+                    <label>Hora da Entrega</label>
+                    <input ng-disabled="!data.cb1" md-no-asterisk ng-model="pedido.hora_entrega" type="text" name="hora_entrega">
+                </md-input-container>
+
+            </div>
+        </div>
+
+        <div layout-gt-xs layout-xs layout-fill>
+
+            <md-input-container md-no-float class="mdl-cell mdl-cell--6-col flex-gt-sm">
+                <label>Status</label>
+                <input ng-disabled="!data.cb1" ng-blur="cc.pesquisacep()" required md-no-asterisk ng-model="pedido.status" type="text" name="cep">
+            </md-input-container>
+
+            <md-input-container md-no-float class="mdl-cell mdl-cell--4-col flex-gt-sm">
+                <label>Total</label>
+                <input ng-disabled="!data.cb1" required md-no-asterisk ng-model="pedido.valor_total" type="text" name="total">
+            </md-input-container>
+
+            <md-input-container md-no-float class="mdl-cell mdl-cell--2-col flex-gt-sm">
+                <label>Cancelado</label>
+                <input ng-disabled="!data.cb1" required md-no-asterisk ng-model="pedido.cancelada" type="text" name="numero">
+            </md-input-container>
+
+        </div>
+
+        <table class="mdl-data-table mdl-js-data-table" layout-fill>
+            <thead>
+                <tr>
+                    <th class="mdl-data-table__cell--non-numeric">Produto</th>
+                    <th>Quantidade</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="item in pedido.itens">
+                    <td class="mdl-data-table__cell--non-numeric">{{item.nome_produto}}</td>
+                    <td>{{item.quantidade}}</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <md-switch ng-model="data.cb1" ng-show="false">
+        </md-switch>
+
+    </section>
+
+</section>

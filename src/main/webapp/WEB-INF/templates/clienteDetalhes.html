@@ -1,0 +1,98 @@
+<section class="md-padding" layout="column" layout-align="top center">
+    <section layout="column" layout-align="top center" class="mdl-cell mdl-cell--7-col flex-gt-sm">
+        <div class="" layout-fill layout>
+            <span flex></span>
+
+            <md-icon md-font-icon>
+                <md-tooltip md-direction="top">
+                    Dados do Cliente
+                </md-tooltip>
+                person
+            </md-icon>
+
+            <span flex></span>
+
+            <a class="mdl-button mdl-js-button mdl-button--icon" href="#/info/pedidos">
+                <md-tooltip md-direction="left">
+                    Voltar
+                </md-tooltip>
+                <md-icon md-font-icon>reply</md-icon>
+            </a>
+
+        </div>
+        <div layout-xs="column" layout-gt-xs layout-fill>
+            <md-input-container md-no-float class="mdl-cell mdl-cell--6-col">
+                <label>Nome</label>
+                <input ng-disabled="!data.cb1" required md-no-asterisk name="nome" value="sdadad" ng-model="cliente.name"
+                       type="text">
+            </md-input-container>
+
+            <md-input-container md-no-float class="mdl-cell mdl-cell--6-col">
+                <label>Sobrenome</label>
+                <input ng-disabled="!data.cb1" required md-no-asterisk name="sobreNome" ng-model="cliente.sobrenome"
+                       type="text">
+            </md-input-container>
+        </div>
+        <div layout-xs="column" layout-gt-xs layout-fill>
+            <div layout-xs layout-gt-xs>
+                <md-input-container md-no-float class="md-block mdl-cell mdl-cell--6-col">
+                    <label>Telefone</label>
+                    <input ng-disabled="!data.cb1"
+                           required md-no-asterisk ng-model="cliente.telefone"
+                           name="telefone" type="text">
+                </md-input-container>
+
+
+                <md-input-container md-no-float class="mdl-cell mdl-cell--6-col">
+                    <label>Estado</label>
+                    <input ng-disabled="!data.cb1" required md-no-asterisk ng-model="cliente.agenteEndereco.uf" type="text" name="estado">
+                </md-input-container>
+
+            </div>
+
+            <md-input-container md-no-float class="mdl-cell mdl-cell--6-col">
+                <label>Cidade</label>
+                <input ng-disabled="!data.cb1" required md-no-asterisk ng-model="cliente.agenteEndereco.cidade" type="text" name="cidade">
+            </md-input-container>
+
+        </div>
+        <div layout-xs layout-gt-xs layout-fill>
+
+            <md-input-container md-no-float class="mdl-cell mdl-cell--6-col">
+                <label>CEP</label>
+                <input ng-disabled="!data.cb1" ng-blur="cc.pesquisacep()" required md-no-asterisk ng-model="cliente.agenteEndereco.cep" type="text" name="cep">
+            </md-input-container>
+
+            <md-input-container md-no-float class="mdl-cell mdl-cell--6-col">
+                <label>Bairro</label>
+                <input ng-disabled="!data.cb1" required md-no-asterisk ng-model="cliente.agenteEndereco.bairro" type="text" name="bairro">
+            </md-input-container>
+        </div>
+
+
+        <md-input-container md-no-float class="mdl-cell mdl-cell--12-col">
+            <label>Endereço</label>
+            <input ng-disabled="!data.cb1" required md-no-asterisk ng-model="cliente.agenteEndereco.endereco" type="text" name="endereco">
+        </md-input-container>
+
+        <div layout-xs layout-gt-xs layout-fill>
+            <md-input-container md-no-float class="mdl-cell mdl-cell--6-col">
+                <label>Número</label>
+                <input ng-disabled="!data.cb1" required md-no-asterisk ng-model="cliente.agenteEndereco.numero" type="text" name="numero">
+            </md-input-container>
+
+            <md-input-container md-no-float class="mdl-cell mdl-cell--6-col">
+                <label>Complemento</label>
+                <input ng-disabled="!data.cb1" md-no-asterisk ng-disabled="true" ng-model="cliente.agenteEndereco.complemento" type="text" name="complemento">
+            </md-input-container>
+        </div>
+
+        </div>
+
+
+        <md-switch ng-model="data.cb1" ng-show="false">
+        </md-switch>
+
+    </section>
+
+</section>

@@ -1,0 +1,279 @@
+<md-content layout layout-fill>
+    <md-tabs layout-fill md-border-bottom md-stretch-tabs="always" layout-fill class="md-primary" md-selected="data.selectedIndex" md-align-tabs="{{data.bottom ? 'bottom' : 'top'}}">
+    <md-tab id="tabDados">
+        <md-tab-label>
+            <md-tooltip md-direction="bottom">
+                Meus Dados
+            </md-tooltip>
+            <md-icon ng-style="{color: '#FFFFFF'}" md-font-icon>person</md-icon>
+        </md-tab-label>
+        <md-tab-body>
+            <md-content layout="column" layout-align="center center">
+                <form name="formEmpresaDados" layout-align="top center" layout="column" class="mdl-cell mdl-cell--8-col">
+                                <div layout-gt-xs layout-xs="column" layout-fill>
+                                    <md-input-container md-no-float class="md-block mdl-cell mdl-cell--4-col mdl-cell--4-col-phone">
+                                        <md-icon hide-xs md-font-icon>business</md-icon>
+                                        <label>Nome da Empresa</label>
+                                        <input ng-disabled="!data.cb1" required md-no-asterisk name="nome" value="sdadad" ng-model="empresa.nome_fantasia"
+                                               type="text">
+                                        <div ng-messages="formEmpresaDados.nome.$error">
+                                            <div ng-message="required">Ops, esse campo não pode ficar em branco!</div>
+                                        </div>
+                                    </md-input-container>
+
+                                    <md-input-container md-no-float class="md-block mdl-cell mdl-cell--5-col mdl-cell--4-col-phone">
+                                        <md-icon hide-xs md-font-icon>email</md-icon>
+                                        <label>Email</label>
+                                        <input ng-disabled="true"  name="email" required md-no-asterisk ng-model="empresa.email"
+                                               type="text" class="mdl-cell mdl-cell--6-col">
+                                        <div ng-messages="formEmpresaDados.email.$error">
+                                            <div ng-message="required">Ops, esse campo não pode ficar em branco!</div>
+                                        </div>
+                                    </md-input-container>
+
+                                    <md-input-container md-no-float class="md-block mdl-cell mdl-cell--3-col mdl-cell--4-col-phone">
+                                        <md-icon hide-xs md-font-icon>phone</md-icon>
+                                        <label>Telefone</label>
+                                        <input ng-disabled="!data.cb1"
+                                               required md-no-asterisk ng-model="empresa.telefone"
+                                               onBlur="MascaraTelefone(formEmpresaDados.telefone);"
+                                               name="telefone" type="text">
+                                        <div ng-messages="formEmpresaDados.telefone.$error">
+                                            <div ng-message="required">Ops, esse campo não pode ficar em branco!</div>
+                                        </div>
+                                    </md-input-container>
+                                </div>
+
+                                <div layout-gt-xs layout-xs="column" layout-fill>
+
+                                    <md-input-container md-no-float class="md-block mdl-cell mdl-cell--4-col">
+                                        <label>CNPJ</label>
+                                        <input ng-disabled="!data.cb1"
+                                               required md-no-asterisk ng-model="empresa.cnpj"
+                                               onBlur="mascaraCpfCnpj(formEmpresaDados.cnpj);"
+                                               name="cpf_cnpj" type="text">
+                                        <div ng-messages="formEmpresaDados.cpf_cnpj.$error">
+                                            <div ng-message="required">Ops, esse campo não pode ficar em branco!</div>
+                                        </div>
+                                    </md-input-container>
+
+                                    <md-input-container md-no-float class="md-block mdl-cell mdl-cell--3-col mdl-cell--4-col-phone">
+                                        <md-icon hide-xs md-font-icon>my_location</md-icon>
+                                        <label>CEP</label>
+                                        <input ng-disabled="!data.cb1" ng-blur="cc.pesquisacep()" required md-no-asterisk ng-model="empresa.cep" type="text" name="cep">
+                                        <div ng-messages="formEmpresaDados.cep.$error">
+                                            <div ng-message="required">Ops, esse campo não pode ficar em branco!</div>
+                                        </div>
+                                    </md-input-container>
+
+                                    <md-input-container md-no-float class="md-block mdl-cell mdl-cell--2-col mdl-cell--4-col-phone">
+                                        <label>Estado</label>
+                                        <md-select ng-disabled="!data.cb1" required md-no-asterisk ng-model="empresa.uf" name="estado">
+                                            <md-option ng-repeat="estado in estados" value="{{estado.uf}}">
+                                                {{estado.uf}}
+                                            </md-option>
+                                        </md-select>
+                                        <div ng-messages="formEmpresaDados.estado.$error">
+                                            <div ng-message="required">Ops, esse campo não pode ficar em branco!</div>
+                                        </div>
+                                    </md-input-container>
+
+
+                                    <md-input-container md-no-float class="md-block mdl-cell mdl-cell--3-col mdl-cell--4-col-phone">
+                                        <label>Cidade</label>
+                                        <input ng-disabled="!data.cb1" required md-no-asterisk ng-model="empresa.cidade" type="text" name="cidade">
+                                        <div ng-messages="formEmpresaDados.cidade.$error">
+                                            <div ng-message="required">Ops, esse campo não pode ficar em branco!</div>
+                                        </div>
+                                    </md-input-container>
+
+                                </div>
+                                <div layout-gt-xs layout-xs="column" layout-fill>
+
+                                    <md-input-container md-no-float class="md-block mdl-cell mdl-cell--4-col">
+                                        <label>Endereço</label>
+                                        <input ng-disabled="!data.cb1" required md-no-asterisk ng-model="empresa.endereco" type="text" name="endereco">
+
+                                        <div ng-messages="formEmpresaDados.endereco.$error">
+                                            <div ng-message="required">Ops, esse campo não pode ficar em branco!</div>
+                                        </div>
+                                    </md-input-container>
+
+                                    <md-input-container md-no-float class="md-block mdl-cell mdl-cell--4-col">
+                                        <label>Bairro</label>
+                                        <input ng-disabled="!data.cb1" required md-no-asterisk ng-model="empresa.bairro" type="text" name="bairro">
+                                        <div ng-messages="formEmpresaDados.bairro.$error">
+                                            <div ng-message="required">Ops, esse campo não pode ficar em branco!</div>
+                                        </div>
+                                    </md-input-container>
+
+                                    <md-input-container md-no-float class="md-block mdl-cell mdl-cell--2-col mdl-cell--4-col-phone">
+                                        <label>Número</label>
+                                        <input ng-disabled="!data.cb1" required md-no-asterisk ng-model="empresa.numero" type="text" name="numero">
+                                        <div ng-messages="formEmpresaDados.numero.$error">
+                                            <div ng-message="required">Ops, esse campo não pode ficar em branco!</div>
+                                        </div>
+                                    </md-input-container>
+
+
+                                    <md-input-container md-no-float class="md-block mdl-cell mdl-cell--2-col mdl-cell--4-col-phone">
+                                        <label>Complemento</label>
+                                        <input ng-disabled="!data.cb1" md-no-asterisk ng-disabled="true" ng-model="empresa.complemento" type="text" name="complemento">
+                                    </md-input-container>
+
+                                </div>
+
+                                <div layout-gt-xs layout-xs="column" layout-fill>
+                                    <md-input-container md-no-float class="md-block mdl-cell mdl-cell--4-col">
+                                        <label>Nome do Responsável</label>
+                                        <input ng-disabled="!data.cb1" required md-no-asterisk name="nome_responsavel" ng-model="empresa.responsavel_legal"
+                                               type="text">
+                                        <div ng-messages="formEmpresaDados.nome_responsavel.$error">
+                                            <div ng-message="required">Ops, esse campo não pode ficar em branco!</div>
+                                        </div>
+                                    </md-input-container>
+
+                                    <div layout-gt-xs layout-xs>
+                                        <md-input-container md-no-float class="md-block mdl-cell mdl-cell--6-col">
+                                            <md-icon md-font-icon>lock_open</md-icon>
+                                            <label>Senha Atual</label>
+                                            <input required ng-disabled="!data.cb1" md-no-asterisk md-no ng-model="empresaUsuario.senha" type="password" name="senha">
+
+                                            <div ng-messages="formEmpresaDados.senha.$error">
+                                                <div ng-message="required">Ops, esse campo não pode ficar em branco!</div>
+                                            </div>
+                                        </md-input-container>
+
+                                        <md-input-container md-no-float class="md-block mdl-cell mdl-cell--6-col">
+                                            <md-icon md-font-icon>lock_outline</md-icon>
+                                            <label>Nova Senha</label>
+                                            <input required ng-disabled="!data.cb1" md-no-asterisk ng-model="novaSenha" type="password" name="novaSenha">
+
+                                            <div ng-messages="formEmpresaDados.novaSenha.$error">
+                                                <div ng-message="required">Ops, esse campo não pode ficar em branco!</div>
+                                            </div>
+                                        </md-input-container>
+
+                                    </div>
+
+
+
+
+                                </div>
+
+                                <div layout layout-fill>
+
+                                    <div layout class="md-padding">
+
+                                        <md-checkbox
+                                                ng-disabled="!data.cb1"
+                                                ng-model="empresa.excluido"
+                                                aria-label="Excluir conta"
+                                                ng-true-value="1"
+                                                ng-false-value="0" >Excluir minha conta?</md-checkbox>
+
+                                    </div>
+
+                                    <span flex></span>
+
+                                    <div layout="column" layout-align="top center">
+                                        <md-tooltip md-direction="left">
+                                            Editar
+                                        </md-tooltip>
+                                        <md-switch ng-model="data.cb1">
+                                        </md-switch>
+
+                                    </div>
+
+
+                                </div>
+
+                                <div layout-gt-xs layout-xs="column" layout-fill layout-align-xs="center center" layout-align-gt-xs="center end" style="margin-top: 30px">
+                                    <md-button ng-click="salvarEmpresaUsuario()" class="md-accent md-raised mdl-cell mdl-cell--5-col">
+                                        Salvar
+                                    </md-button>
+                                </div>
+
+                </form>
+            </md-content>
+        </md-tab-body>
+    </md-tab>
+    <md-tab id="tabPlano" >
+        <md-tab-label>
+            <md-tooltip md-direction="bottom">
+                Meu Plano
+            </md-tooltip>
+            <md-icon ng-style="{color: '#FFFFFF'}" md-font-icon>attach_money</md-icon>
+        </md-tab-label>
+        <md-tab-body>
+            <div layout="column" layout-fill layout-align="center center">
+
+                <section class="mdl-cell mdl-cell--8-col" layout-fill>
+
+                    <md-grid-list
+                            md-cols="12" md-row-height="4:4"
+                            md-cols-xs="4" md-row-height-xs="4:4"
+                            md-gutter="20px" md-gutter-xs="20px"
+                            layout-fill
+                            >
+
+                        <md-grid-tile
+                                ng-repeat="plano in listaPlanos"
+                                md-rowspan="4"
+                                md-colspan="4">
+                            <div layout="column" layout-align="top center" class="md-padding" layout-fill>
+                                <img class="mdl-cell mdl-cell--5-col  mdl-cell--2-col-phone" src="../resources/assets/png/bg_plano.png">
+
+
+                                <v-accordion class="vAccordion--default" multiple layout-fill>
+
+                                    <!-- add expanded attribute to open the section -->
+                                    <v-pane expanded>
+                                        <v-pane-header>
+                                            {{plano.nome}}
+                                        </v-pane-header>
+
+                                        <v-pane-content>
+                                            <p >
+                                            Esse plano possui coisa pra caralho porque gostamos de coisa pra caralho
+                                            e é um plano bom pra caralho. Esse plano possui coisa pra caralho porque gostamos de coisa pra caralho
+                                            e é um plano bom pra caralho.</p>
+                                            <md-button layout-fill class="md-accent md-raised">
+                                                Quero este!
+                                            </md-button>
+                                        </v-pane-content>
+                                    </v-pane>
+
+                                </v-accordion>
+
+
+
+                            </div>
+
+
+
+
+                        </md-grid-tile>
+                    </md-grid-list>
+
+                </section>
+            </div>
+        </md-tab-body>
+    </md-tab>
+    <md-tab id="tabConfig" >
+        <md-tab-label>
+            <md-tooltip md-direction="bottom">
+                Configurações
+            </md-tooltip>
+            <md-icon ng-style="{color: '#FFFFFF'}" md-font-icon>settings</md-icon>
+        </md-tab-label>
+        <md-tab-body>
+            <div layout="column" layout-align="center center">
+                <section class="mdl-cell mdl-cell--10-col">
+
+                </section>
+            </div>
+        </md-tab-body>
+    </md-tab>
+</md-tabs>
+</md-content>

@@ -1,0 +1,50 @@
+<section class="md-padding" layout="column" layout-align="top center">
+    <form name="formContato" class="mdl-cell mdl-cell--5-col">
+
+                <!-- Início do cabeçalho -->
+                <header layout-padding layout-align="top center" layout="column">
+                    <img src="../resources/assets/png/avatar.png"  class="avatar">
+                </header>
+                <!-- Fim do cabeçalho -->
+
+                <div layout="column" layout-align="top center">
+                    <md-input-container md-no-float class="md-block mdl-cell mdl-cell--10-col">
+                        <md-icon md-font-icon>email</md-icon>
+                        <label>Email</label>
+                        <input name="email" required md-no-asterisk ng-model="agente.email"
+                               type="text" class="mdl-cell mdl-cell--6-col">
+                        <div ng-messages="formContato.email.$error">
+                            <div ng-message="required">Ops, o email pode ficar em branco!</div>
+                        </div>
+                    </md-input-container>
+
+                    <md-input-container md-no-float class="md-block mdl-cell mdl-cell--10-col">
+                        <md-icon md-font-icon>lock</md-icon>
+                        <label>Senha</label>
+                        <input required ng-model="agente.senha" type="password"
+                               name="Senha" class="mdl-cell mdl-cell--6-col">
+                        <div ng-messages="formContato.Senha.$error">
+                            <div ng-message="required">Ops, a senha não pode ficar em branco!</div>
+                        </div>
+                    </md-input-container>
+
+                </div>
+
+                <div layout="column" layout-align="center center">
+                    <md-button ng-click="login(agente)" class="md-primary md-raised mdl-cell mdl-cell--10-col">
+                        Entrar
+                    </md-button>
+                </div>
+
+                <div layout class="md-padding">
+                    <md-button class="md-padding" ng-click="abreModalEsqueciSenha($event)">
+                        Recuperar senha
+                    </md-button>
+                    <span flex></span>
+                    <md-button ng-click="chamaClienteCadastro()">Me cadastrar</md-button>
+                </div>
+
+
+    </form>
+
+</section>

@@ -1,0 +1,155 @@
+<section class="md-padding" layout="column" layout-align="top center">
+    <md-subheader class="md-accent">{{data_atual}}</md-subheader>
+
+    <md-list class="md-whiteframe-1dp mdl-cell mdl-cell--11-col" ng-cloak>
+        <div layout class="mdl-cell mdl-cell--12-col">
+            <md-subheader layout="column" layout-align="top end" class=" md-no-sticky mdl-cell mdl-cell--1-col">
+                <md-icon md-font-icon>
+                    alarm
+                    <md-tooltip md-direction="top">
+                        Hora do Pedido
+                    </md-tooltip>
+                </md-icon>
+            </md-subheader>
+
+            <md-subheader layout="column" layout-align="top center" class=" md-no-sticky mdl-cell mdl-cell--3-col">
+                <md-icon md-font-icon>
+                    person
+                    <md-tooltip md-direction="top">
+                        Cliente
+                    </md-tooltip>
+                </md-icon>
+            </md-subheader>
+            <md-subheader hide-xs layout="column" layout-align="top center" class=" md-no-sticky mdl-cell mdl-cell--2-col">
+                <md-icon md-font-icon>
+                    work
+                    <md-tooltip md-direction="top">
+                        Produtos
+                    </md-tooltip>
+                </md-icon>
+            </md-subheader>
+            <md-subheader hide-xs  class=" md-no-sticky mdl-cell mdl-cell--2-col">
+                <md-icon md-font-icon>
+                    credit_card
+                    <md-tooltip md-direction="top">
+                        Pagamento
+                    </md-tooltip>
+                </md-icon> |
+                <md-icon md-font-icon>
+                    attach_money
+                    <md-tooltip md-direction="top">
+                        Troco
+                    </md-tooltip>
+                </md-icon>
+            </md-subheader>
+            <md-subheader hide-xs layout="column" layout-align="top center"  class=" md-no-sticky mdl-cell mdl-cell--2-col">
+                <md-icon md-font-icon>
+                    location_on
+                    <md-tooltip md-direction="top">
+                        Localização
+                    </md-tooltip>
+                </md-icon>
+            </md-subheader>
+
+
+        </div>
+
+        <md-list-item ng-repeat="pedido in pedidos">
+            <md-divider></md-divider>
+
+                <div ng-if="pedido.status == 'Cancelado'">
+                    <md-icon ng-style="{color: '#F44336'}" md-font-icon>
+                        fiber_manual_record
+                        <md-tooltip md-direction="left">
+                            Cancelada
+                        </md-tooltip>
+                    </md-icon>
+                </div>
+                <div  ng-if="pedido.status == 'Pendente'">
+                    <md-icon ng-style="{color: '#2196F3'}" md-font-icon>
+                        fiber_manual_record
+                        <md-tooltip md-direction="left">
+                            Pendente
+                        </md-tooltip>
+                    </md-icon>
+                </div>
+                <div ng-if="pedido.status == 'Aprovado'">
+                    <md-icon ng-style="{color: '#4CAF50'}" md-font-icon>
+                        fiber_manual_record
+                        <md-tooltip md-direction="left">
+                            Aprovada
+                        </md-tooltip>
+                    </md-icon>
+                </div>
+                <div ng-if="pedido.status == 'Negado'">
+                    <md-icon ng-style="{color: '#F44336'}" md-font-icon>
+                        fiber_manual_record
+                        <md-tooltip md-direction="left">
+                            Negada
+                        </md-tooltip>
+                    </md-icon>
+                </div>
+
+            <div layout="column" layout-align="top center"  class="mdl-cell mdl-cell--1-col">{{pedido.hora_pedido | date:'HH:mm' }}</div>
+
+            <a layout="column" style="text-decoration:none;" layout-align="top center" class="md-primary mdl-cell mdl-cell--3-col" href="#/info/clienteDetalhes/{{pedido.cod_agente}}">
+                {{pedido.nome_cliente}}
+            </a>
+
+            <div layout="column" layout-align="top center" hide-xs class="mdl-cell mdl-cell--2-col">
+                <span ng-repeat="item in pedidos[$index].itens">
+                    {{item.quantidade}}x
+                    {{item.nome_produto}}
+                </span>
+            </div>
+            <div class="mdl-cell mdl-cell--2-col" layout="column" hide-xs layout-align="top center">
+                R$ {{pedido.valor_total}} | {{pedido.troco}}
+            </div>
+
+            <a hide-xs layout="column" style="text-decoration:none;" layout-align="top center" class="md-primary mdl-cell mdl-cell--4-col" href="#/info/googleMaps/{{pedido.cod_agente}}">
+                {{pedido.endereco}}
+            </a>
+
+
+            <button ng-click="salvarPedidosPorEmpresa($index, 'Aprovado')" class="md-primary mdl-button mdl-js-button mdl-button--icon">
+                <md-tooltip md-direction="bottom">
+                    Aprovar
+                </md-tooltip>
+                <md-icon ng-style="{color: '#2196F3'}" md-font-icon>done</md-icon>
+            </button>
+
+            <button ng-click="salvarPedidosPorEmpresa($index, 'Negado')" class="mdl-button mdl-js-button mdl-button--icon">
+                <md-tooltip md-direction="bottom">
+                    Negar
+                </md-tooltip>
+                <md-icon ng-style="{color: '#F44336'}" md-font-icon>clear</md-icon>
+            </button>
+
+            <a hide-gt-xs href="#/info/pedidoDetalhes/{{pedido}}" class="md-primary mdl-button mdl-js-button mdl-button--icon">
+                <md-tooltip md-direction="bottom">
+                    Visualizar
+                </md-tooltip>
+                <md-icon ng-style="{color: '#9E9E9E'}" md-font-icon>visibility</md-icon>
+            </a>
+
+
+        </md-list-item>
+    </md-list>
+
+    <script type="text/ng-template" id="novoPedido.html">
+        <div class="ui-notification novoPedido">
+            <div class="message">
+                <div ng-repeat="pedido in novosPedidos" layout="column">
+                    <span>{{pedido.nome_cliente}}</span>
+                    <span ng-repeat="item in pedido.itens track by $index">
+                        {{item.quantidade}}x
+                        {{item.nome_produto}}
+                    </span>
+                </div>
+            </div>
+
+        </div>
+    </script>
+
+
+</section>
